@@ -18,10 +18,10 @@ def recommend_movie(movie_name: str, n_recommendations=5):
 
     if not movie.empty:
         # Get the cluster label of the input movie
-        cluster = movie['dbscan_10d_clusters'].values[0]
+        cluster = movie['dbscan_clusters'].values[0]
 
         # Get all movies in the same cluster
-        cluster_movies = df_movies[df_movies['dbscan_10d_clusters'] == cluster]
+        cluster_movies = df_movies[df_movies['dbscan_clusters'] == cluster]
 
         # If there are more than the requested number of movies, randomly select them
         if len(cluster_movies) >= n_recommendations:
